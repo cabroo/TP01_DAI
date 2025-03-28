@@ -1,7 +1,7 @@
 let miUrl = null;
 let miObjeto = null;
 let error = "Error";
-// miUrl = 'http://ww.ort.edu.ar:8080/alumnos/index.htm?curso=2022&mes=mayo';
+// miUrl = 'httpsq://ww.ort.edu.ar:8080/alumnos/index.htm?curso=2022&mes=mayo';
 miObjeto = parsearUrl (miUrl);
 console.log(miObjeto);
 
