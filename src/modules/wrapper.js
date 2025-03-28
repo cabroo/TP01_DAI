@@ -7,7 +7,12 @@ cantidadTotal : 0,
 datos : []
 };
 
-
+let respuesta = await Test();
+console.log('respuesta', respuesta);
+const Test = async (searchText) => {
+const requestString = `http://www.omdbapi.com/?apikey=7c62gb5e&s=cars`;
+const apiResponse = await axios.get(requestString);
+return apiResponse.data;
 
 // No seas vago, acá hay que hacer el cuerpo de la función!!!
 return returnObject;
@@ -37,10 +42,5 @@ export {OMDBSearchByPage, OMDBSearchComplete, OMDBGetByImdbID};
 
 
 
-let respuesta = await Test();
-console.log('respuesta', respuesta);
-const Test = async (searchText) => {
-const requestString = `http://www.omdbapi.com/?apikey=7c62gb5e&s=cars`;
-const apiResponse = await axios.get(requestString);
-return apiResponse.data;
+
 };
