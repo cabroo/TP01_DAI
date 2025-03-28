@@ -1,4 +1,5 @@
-import {PI, sumar, restar, multiplicar, dividir, numeros} from './src/modules/matematica.js';
+import {PI, sumar, restar, multiplicar, dividir, numeros} from './modules/matematica.js';
+
 let total, numero1=10, numero2=20;
 console.clear();
 console.log(`La constante PI vale '${PI}'`);

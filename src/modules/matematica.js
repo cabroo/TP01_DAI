@@ -10,8 +10,9 @@ function restar(num1, num2)
     return (num1 - num2);
 }
 const dividir = (a, b) => {
-    return (a*b);
+    return (a/b);
 };
 const multiplicar = (a, b) => {
     return (a*b);
-};
+}; 
+export {PI, sumar, multiplicar, restar, dividir, numeros}; 

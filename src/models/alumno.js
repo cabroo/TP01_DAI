@@ -5,5 +5,9 @@ export default class Alumno
         this.username = username; 
         this.dni = dni; 
         this.edad = edad; 
+    } 
+    toString()
+    {
+       return "Nombre: " + this.username + " | DNI: " + this.dni + " | Edad: " + this.edad
     }
 }
