@@ -1,5 +1,6 @@
 import axios from "axios";
-const APIKEY = "568b3ac0"; 
+const APIKEY = "568b3ac0";  
+const RESULT_PER_PAGE = 10; 
 const OMDBSearchByPage = async (searchText, page = 1) => {
 
   let returnObject = {
@@ -34,32 +35,29 @@ const OMDBSearchByPage = async (searchText, page = 1) => {
 
 
 const OMDBSearchComplete = async (searchText) => {
-
-  let returnObject = { }; 
+  let returnObject = {}; 
   let currentPage = 1, maxPages, countResults;  
-  let returnPageTemp; 
+  let returnPageTemp; // Asegúrate de que esta sea la variable correcta
   
   returnPageTemp = await OMDBSearchByPage(searchText, currentPage); 
   countResults = returnPageTemp.cantidadTotal;  
-  if(returnPageTemp.cantidadTotal <= RESULT_PER_PAGE)
-  {
+  
+  if(returnPageTemp.cantidadTotal <= RESULT_PER_PAGE) {
+    returnObject = returnPageTemp; 
+  } else {
     returnObject = returnPageTemp; 
   } 
-  else 
-  {
-    returnObject = returnPageTemp; 
-  } 
 
-   maxPages = Math.ceil(countResults / RESULT_PER_PAGE);  
-   for ( let currentPage = 2; currentPage <= maxPages; currentPage++ ) 
-   {
-     returnPagetemp = await OMDBSearchByPage(searchText, currentPage); 
-     returnObject.datos = returnObject.datos.concat(returnPageTemp.datos);  
+  maxPages = Math.ceil(countResults / RESULT_PER_PAGE);  
 
-   } 
-   return returnObject; 
+  for (let currentPage = 2; currentPage <= maxPages; currentPage++) {
+    returnPageTemp = await OMDBSearchByPage(searchText, currentPage);  // Utiliza 'returnPageTemp' aquí también
+    returnObject.datos = returnObject.datos.concat(returnPageTemp.datos);  
+  }
 
+  return returnObject; 
 };
+
 
 
 const OMDBGetByImdbID = async (imdbID) => {
