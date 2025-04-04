@@ -37,7 +37,7 @@ const OMDBSearchByPage = async (searchText, page = 1) => {
 const OMDBSearchComplete = async (searchText) => {
   let returnObject = {}; 
   let currentPage = 1, maxPages, countResults;  
-  let returnPageTemp; // Asegúrate de que esta sea la variable correcta
+  let returnPageTemp; 
   
   returnPageTemp = await OMDBSearchByPage(searchText, currentPage); 
   countResults = returnPageTemp.cantidadTotal;  
@@ -51,7 +51,7 @@ const OMDBSearchComplete = async (searchText) => {
   maxPages = Math.ceil(countResults / RESULT_PER_PAGE);  
 
   for (let currentPage = 2; currentPage <= maxPages; currentPage++) {
-    returnPageTemp = await OMDBSearchByPage(searchText, currentPage);  // Utiliza 'returnPageTemp' aquí también
+    returnPageTemp = await OMDBSearchByPage(searchText, currentPage);  
     returnObject.datos = returnObject.datos.concat(returnPageTemp.datos);  
   }
 
